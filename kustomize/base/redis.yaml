@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-leader
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
   labels:
     app: redis
     role: leader
@@ -33,6 +35,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-follower
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: redis
     role: follower
